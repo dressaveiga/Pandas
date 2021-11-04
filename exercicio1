@@ -1,0 +1,27 @@
+nomeAtleta  =  input ( 'Qual seu nome?' )
+resultados  =  ' \ n Resultado Final: \ n '
+mediaFinal  =  0
+
+while  nomeAtleta :
+
+    salto1  =  float ( input ( 'Qual foi o valor do seu primeiro salto? (em metros)' ))
+    salto2  =  float ( input ( 'Qual foi o valor do seu segundo salto? (em metros)' ))
+    salto3  =  float ( input ( 'Qual foi o valor do seu terceiro salto? (em metros)' ))
+    salto4  =  float ( input ( 'Qual foi o valor do seu quarto salto? (em metros)' ))
+    salto5  =  float ( input ( 'Qual foi o valor do seu salto quinto? (em metros)' ))
+
+    campeao  = ( salto1  +  salto2  +  salto3  +  salto4  +  salto5 ) /  5
+
+    resultados  =  '-' * 20 + ' \ n '
+    resultados  =  f'Atleta: { nomeAtleta }  \ n '
+    resultados  =  f'Saltos:   { salto1 } - { salto2 } - { salto3 } - { salto4 } - { salto5 }  \ n '
+    resultados  =  f'Média dos Saltos: { media : 2f } m \ n '
+
+    if  media  >  mediaFinal :
+        mediaFinal  =  media
+        campeao  =  nome
+
+    nome  =  input ( 'Qual seu nome?' )
+   
+mostrar ( resultados )
+mostrar ( f'O vencedor foi: { campeao } ' )
