@@ -1,0 +1,43 @@
+import random
+
+def gerarValores():
+    return random.randint(1,6)
+
+def repetir(x):
+    valor1= 0
+    valor2= 0
+    valor3= 0 
+    valor4= 0
+    valor5= 0
+    valor6 = 0
+    for val in range(x):
+        teste = gerarValores()
+    
+        if(teste==1):
+            valor1 += 1
+        elif(teste==2):
+            valor2 += 1
+        elif(teste==3):
+            valor3 += 1
+        elif(teste==4):
+            valor4 += 1
+        elif(teste==5):
+            valor5 += 1
+        else:
+            valor6 += 1
+            
+
+    print("O numero 1 apareceu ", valor1," vezes")
+    print("O numero 2 apareceu ", valor2," vezes")
+    print("O numero 3 apareceu ", valor3," vezes")
+    print("O numero 4 apareceu ", valor4," vezes ")
+    print("O numero 5 apareceu ", valor5," vezes ")
+    print("O numero 6 apareceu ", valor6," vezes ")
+
+def formatacao():
+    x = 100
+    repetir(x)
+
+while True:
+    formatacao()
+    break
