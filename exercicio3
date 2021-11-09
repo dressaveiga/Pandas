@@ -1,0 +1,7 @@
+nome = input ('Digite seu nome: ')
+
+a = ''
+
+for letter in nome.strip():
+  a = a + letter
+  print(a) 
