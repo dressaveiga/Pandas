@@ -1,0 +1,51 @@
+import pandas as pd
+
+def byteParaMegabyte(num):
+    return num / 1048576
+
+def porcentagem(num, total):
+    return round(((num / total) * 100), 2)
+
+def media(total, qtd):
+    return total / qtd
+
+def totalidade(list):
+    total = 0
+
+    for iten in list:
+        total += iten
+
+    return total
+
+with open("usuario.txt", "u") as arquivo:
+    arquivo = arquivo.readlines()
+
+
+a = 1
+total = 0
+
+usuarios = []
+valores = []
+
+for line in arquivo:
+    armazenamento = byteToMegabyte(float(line.split(' ')[1].replace('\n', '')))
+    valores.append(armazenamento)
+
+    usuarios.append({
+        'Nr.' : a,
+        'Usuario' : line.split(' ')[0],
+        'Espaco utilizado' : str(round(armazenamento, 2)) + ' MB',
+    })
+    a += 1
+
+a = 0
+for user in usuarios:
+    user['% do uso'] = str(percent(valores[a], totalidade(valores))) + ' %'
+    a += 1
+
+usuarios_df = pd.DataFrame(usuarios)
+
+with open('relatorio.txt', 'r') as relatorio:
+    relatorio.write('ACME Inc.\n Uso do espaco em disco pelos usuarios\n')
+    relatorio.write('\n\nEspaco total ocupado: {} MB'.format(round(totalidade(valores), 2)))
+    relatorio.write('\nEspaco medio ocupado: {} MB'.format(round(media(totalidade(valores), len(usuarios)), 2)))
