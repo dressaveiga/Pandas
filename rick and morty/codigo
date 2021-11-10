@@ -1,0 +1,46 @@
+from numpy import character
+import pandas as pd
+from IPython import display
+
+rick_morty_df = pd.read_json('https://raw.githubusercontent.com/jeffersonchaves/rick-and-morty-dados/main/character.json')
+
+# 1- Quantos personagens existe nessa lista?
+linha, coluna = rick_morty_df.shape
+
+print(f"Existem {100} personagens nessa lista")
+
+#2- Quantos personagens são humanos?
+humano = rick_morty_df['species'] == 'Humano'
+
+humano_df = rick_morty_df.loc[humano]
+qtty_humanos, col = humano_df.shape
+
+print(f'Existem {qtty_humanos} personagens humanos')
+
+#3- Quantos personagens são alienígenas?
+alien = rick_morty_df['species'] == 'Alien'
+
+alien_df = rick_morty_df.loc[alien]
+qtty_aliens, col = alien_df.shape
+
+print(f'Existem {qtty_aliens} personagens alienígenas ')
+
+#4- Há quantos tipos de alienígenas diferentes?
+a = alien_df['type'].value_counts()
+
+qtty_alienTypes = a.shape
+print(f'Existem {qtty_alienTypes[0]} tipos de alienígenas diferentes')
+
+#5- Qual o nome do episódio em que o personagem Crocubot aparece?
+episodio_df = pd.read_json('https://raw.githubusercontent.com/jeffersonchaves/rick-and-morty-dados/main/episode.json')
+
+crocubot_condition = rick_morty_df['name'] == 'Crocubot'
+
+crocubot = rick_morty_df[crocubot_condition]
+
+episodio_croc = crocubot['episodio']
+episodio_croc = episodio_croc[80]
+episodio_croc = int(episodio_croc.split('/')[-1])
+episodio_croc = episodio_df[episodio_croc]
+
+print(f'O nome do episodio em que o personagem Crocubot aparece é {episodio_croc}')
